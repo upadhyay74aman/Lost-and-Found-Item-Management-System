@@ -16,14 +16,14 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async (Email, Password) => {
-        const { data } = await axios.post('http://localhost:5000/api/login', { Email, Password });
+        const { data } = await axios.post('https://lost-and-found-item-management-system-9wyh.onrender.com/api/login', { Email, Password });
         setUser(data);
         localStorage.setItem('userInfo', JSON.stringify(data));
         return data;
     };
 
     const register = async (Name, Email, Password) => {
-        const { data } = await axios.post('http://localhost:5000/api/register', { Name, Email, Password });
+        const { data } = await axios.post('https://lost-and-found-item-management-system-9wyh.onrender.com/api/register', { Name, Email, Password });
         setUser(data);
         localStorage.setItem('userInfo', JSON.stringify(data));
         return data;

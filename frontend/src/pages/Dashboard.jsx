@@ -16,7 +16,7 @@ export default function Dashboard() {
 
   const fetchItems = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/items', config);
+      const { data } = await axios.get('https://lost-and-found-item-management-system-9wyh.onrender.com/api/items', config);
       setItems(data);
     } catch (err) {
       console.error('Failed to fetch items');
@@ -27,7 +27,7 @@ export default function Dashboard() {
     e.preventDefault();
     if (!searchQuery) return fetchItems();
     try {
-      const { data } = await axios.get(`http://localhost:5000/api/items/search?name=${searchQuery}`, config);
+      const { data } = await axios.get(`https://lost-and-found-item-management-system-9wyh.onrender.com/api/items/search?name=${searchQuery}`, config);
       setItems(data);
     } catch (err) {
       console.error('Search failed');
@@ -42,11 +42,11 @@ export default function Dashboard() {
     e.preventDefault();
     try {
       if (isEditing) {
-        await axios.put(`http://localhost:5000/api/items/${editId}`, formData, config);
+        await axios.put(`https://lost-and-found-item-management-system-9wyh.onrender.com/api/items/${editId}`, formData, config);
         setIsEditing(false);
         setEditId(null);
       } else {
-        await axios.post('http://localhost:5000/api/items', formData, config);
+        await axios.post('https://lost-and-found-item-management-system-9wyh.onrender.com/api/items', formData, config);
       }
       setFormData({ ItemName: '', Description: '', Type: 'Lost', Location: '', ContactInfo: '' });
       fetchItems();
@@ -71,7 +71,7 @@ export default function Dashboard() {
   const deleteItem = async (id) => {
     if (window.confirm("Are you sure you want to delete this item?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/items/${id}`, config);
+        await axios.delete(`https://lost-and-found-item-management-system-9wyh.onrender.com/api/items/${id}`, config);
         fetchItems();
       } catch (err) {
         alert("Failed to delete item");
