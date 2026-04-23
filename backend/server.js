@@ -16,6 +16,11 @@ const itemRoutes = require('./routes/itemRoutes');
 app.use('/api', authRoutes);
 app.use('/api/items', itemRoutes);
 
+// Root route for browsers
+app.get('/', (req, res) => {
+    res.send('Welcome to the Lost & Found API! The backend server is running successfully.');
+});
+
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
